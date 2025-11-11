@@ -1,9 +1,9 @@
-FROM openjdk:11 AS BUILD_IMAGE
+FROM 192.168.17.98:5000/openjdk:11 AS BUILD_IMAGE
 RUN apt update && apt install maven -y
 RUN git clone https://github.com/devopshydclub/vprofile-project.git
 RUN cd vprofile-project && git checkout docker && mvn install
 
-FROM tomcat:9-jre11
+FROM 192.168.17.98:5000/tomcat:9-jre11
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
